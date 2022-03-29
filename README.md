@@ -18,8 +18,19 @@ With support of **callbacks, colors, custom text** and more cool stuff.
   - [Creating your first GUI element](#creating-your-first-gui-element)
 - [Reference](#reference)
   - [gui-button.lua](#gui-buttonlua)
-    - [addButton()](#addbuttonxywhtext1bg1fg1functypetext2bg2fg2)
-    - [draw()](#draw)
+    - Methods
+      - [addButton()](#addbuttonxywhtext1bg1fg1functypetext2bg2fg2)
+      - [draw()](#draw)
+    - Values
+      - [button](#button)
+      - [buttons](#btnbuttons)
+  - [gui-inputfield.lua](gui-inputfieldlua)
+    - Methods
+      - [addField()](#addfieldxywbufferbgfg)
+      - [draw()](#draw-1)
+    - Values
+      - [field](#field)
+      - [fields](#inpfields)
 
 # Getting Started
 ----
@@ -46,8 +57,7 @@ Now, our files are imported to your code, let's create our first element!
 ```lua
 function love.load()
     -- it's important to create elements inside load() function, to not overload the project when running
-    btn.addButton(150, 150, 150, 75, "My First Button!", {1, 1, 1, 1}, {0, 0, 0, 1}, nil, 1, nil, nil, nil)
-    -- as in version 1.0 the function is pretty long, it will be hopefully shortened in later versions
+    btn.addButton(150, 150, 150, 75, "My First Button!", {1, 1, 1, 1}, {0, 0, 0, 1})
 end
 ```
 
@@ -128,21 +138,21 @@ Try running the project now, and if you will click the button, you'll see that i
 
 ---------
 
-## gui-button.lua
+# gui-button.lua
 
 ### Methods
 
-## addButton(x,y,w,h,text1,bg1,fg1,func,type,text2,bg2,fg2)
+## `addButton(x,y,w,h,text1,bg1,fg1,func,type,text2,bg2,fg2)`
 
 - `x` - X-Coordinate of the button `(number)`
 - `y` - Y-Coordinate of the button `(number)`
 - `w` - Width of button's background rectangle `(number)`
 - `h` - Height of button's background rectangle `(number)`
 - `text1` - Text on the button `(string)`
-- `bg1` - Color of button's background rectangle `(table) {r, g, b, a}`
-- `fg1` - Color of button's text `(table) {r, g, b, a}`
-- `func` - Callback of onClick event `(func)`
-- `type` - Button type `(number)`
+- `bg1` - Color of button's background rectangle `(table) {r, g, b, a}` | `({1,0,0,1})`
+- `fg1` - Color of button's text `(table) {r, g, b, a}` | `({0,1,0,1})`
+- `func` - Callback of onClick event `(func)` | `(function() end)`
+- `type` - Button type `(number)` `(1)`
   - `1` - Basic button, active when holding/clicking
   - `2` - Switchable tumbler, active when clicked once, inactive when clicked while active.
 
@@ -151,7 +161,73 @@ Note: **Arguments below won't work without `love.mousepressed` and `love.mousere
 - `text2` - Text when active `(string)`
 - `bg2` - Color of button's background rectangle when active `(table) {r, g, b, a}`
 - `fg2` - Color of button's text when active `(table) {r, g, b, a}`
+
+
+- Return: `id` `(number)` - index of the button in btn.buttons
 ---
-## draw()
+## `draw()`
+
+- Return: `None`
 
 Note: **Has to be executed in `main.lua`, at function `love.draw()`**
+
+---
+
+### Values
+
+## Button
+- `table`
+  - Structure: 
+```lua
+    button = {
+        x, y, w, h, text1, bg1, fg1, func, type, text2, bg2, fg2, isActive, state
+    }
+```
+
+## btn.buttons
+- `table`
+  - Structure: `{{button1}, {button2}, {button3}, ...}`
+
+---
+
+# gui-inputfield.lua
+
+- Note: **All inputfield-elements need `love.mousepressed()`, `love.keypressed()` and `love.textinput()` callbacks, else they just won't work.**
+
+### Methods
+
+## `addField(x,y,w,buffer,bg,fg)`
+
+- `x` - X-Coordinate of the field `(number)`
+- `y` - Y-Coordinate of the field `(number)`
+- `w` - Width of the field `(number)`
+- `buffer` - Input of the field `(string)`
+- `bg` - Color of field's background `(table)` | `{1,0,0,1}`
+- `fg` - Color of field's text `(table)` | `{0,1,0,1}`
+
+- Return: `id` `(number)` - index of the field in inp.fields
+
+---
+## `draw()`
+
+- Return: `None`
+
+Note: **Has to be executed in `main.lua`, at function `love.draw()`**
+
+---
+
+### Values
+
+## field
+- `table`
+  - Structure: 
+```lua
+  field = {
+    x, y, w, h, buffer, bg, fg, isActive
+  }
+```
+
+## inp.fields
+- `table`
+  - Structure: `{{field1}, {field2}, {field3}, ...}`
+
