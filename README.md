@@ -26,7 +26,7 @@ With support of **callbacks, colors, custom text** and more cool stuff.
     - Values
       - [button](#button)
       - [buttons](#btnbuttons)
-  - [gui-inputfield.lua](gui-inputfieldlua)
+  - [gui-inputfield.lua](#gui-inputfieldlua)
     - Methods
       - [addField()](#addfieldxywbufferbgfg)
       - [draw()](#draw-1)
