@@ -50,7 +50,6 @@ end
 local function clamp(x,min,max)
   x = x < min and min or x
   x = x > max and max or x
-  log(x)
   return x
 end
 
