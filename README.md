@@ -1,6 +1,6 @@
 # Love2D-GUI-Libs
 
-![Made With Lua](https://img.shields.io/badge/Made%20With-Lua-%232C2D72.svg?style=flat&logo=lua&logoColor=white) ![Version 1.4](https://img.shields.io/badge/Version-1.0-cfc)
+![Made With Lua](https://img.shields.io/badge/Made%20With-Lua-%232C2D72.svg?style=flat&logo=lua&logoColor=white) ![Version 1.4](https://img.shields.io/badge/Version-1.4-cfc)
 ![Total Lines of Code](https://img.shields.io/tokei/lines/github/danilus-s/love2d-gui-libs?label=Total%20Lines%20of%20Code&logo=VisualStudioCode)
 
 ![README and DOCS by FelixFromDiscord](https://img.shields.io/badge/README%20and%20DOCS%20By-FelixFromDiscord-%232C2D72.svg?style=flat&logoColor=white)
